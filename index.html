@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MATHOPOLY — Monopoli Matematika</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+  >
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>🎲 MATHOPOLY</h1>
+      <p>Jawab soal, beli properti, dan kumpulkan uang!</p>
+    </header>
+
+    <div class="layout">
+      <section class="board-wrap" aria-label="Papan permainan">
+        <div id="board" class="board"></div>
+      </section>
+
+      <aside class="panel">
+        <h2>Permainan</h2>
+
+        <section id="playerSetup" class="player-setup">
+          <label for="playerCount">Jumlah pemain</label>
+          <select id="playerCount">
+            <option value="2">2 orang</option>
+            <option value="3">3 orang</option>
+            <option value="4">4 orang</option>
+            <option value="5">5 orang</option>
+            <option value="6">6 orang</option>
+            <option value="7">7 orang</option>
+            <option value="8">8 orang</option>
+          </select>
+
+          <div id="playerNames" class="player-names"></div>
+
+          <button id="startButton" type="button">Mulai Permainan</button>
+          <button id="resumeButton" class="secondary" type="button" hidden>
+            Lanjutkan Permainan Tersimpan
+          </button>
+        </section>
+
+        <section id="gameControls" hidden>
+          <div id="players" class="players"></div>
+
+          <div class="dice-display" aria-live="polite">
+            <i id="diceIcon" class="fas fa-dice-one" aria-label="Dadu"></i>
+            <span id="diceResult">—</span>
+          </div>
+
+          <button id="rollButton" type="button" disabled>Lempar Dadu</button>
+
+          <section id="purchasePanel" class="action-box" hidden>
+            <p id="propertyPrompt"></p>
+            <form id="questionForm">
+              <label id="questionText" for="answerInput"></label>
+              <div class="answer-row">
+                <input id="answerInput" type="number" inputmode="numeric"
+                  placeholder="Jawaban" required>
+                <button type="submit">Jawab</button>
+              </div>
+            </form>
+            <div id="purchaseActions" hidden>
+              <button id="buyButton" type="button">Beli Properti</button>
+              <button id="auctionButton" class="secondary" type="button">
+                Lewati Pembelian
+              </button>
+            </div>
+          </section>
+
+          <section id="auctionPanel" class="action-box" hidden>
+            <h3>Lelang Properti</h3>
+            <p id="auctionText"></p>
+            <label for="bidInput">Tawaran</label>
+            <input id="bidInput" type="number" min="1" step="1">
+            <button id="bidButton" type="button">Ajukan Tawaran</button>
+            <button id="passBidButton" class="secondary" type="button">
+              Lewati Lelang
+            </button>
+          </section>
+
+          <details class="game-section" open>
+            <summary>Kepemilikan</summary>
+            <div id="ownershipList"></div>
+          </details>
+
+          <div id="status" class="status" aria-live="polite">
+            Atur pemain, lalu tekan Mulai Permainan.
+          </div>
+
+          <button id="resetButton" class="secondary" type="button">
+            Mulai Ulang
+          </button>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div id="popupOverlay" class="overlay" role="dialog" aria-modal="true"
+    aria-labelledby="popupTitle">
+    <div class="popup">
+      <h2 id="popupTitle"></h2>
+      <p id="popupDescription"></p>
+      <button id="popupOk" type="button">Oke</button>
+    </div>
+  </div>
+</body>
+</html>
